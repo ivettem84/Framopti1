@@ -2,7 +2,7 @@
 
 function [best,fmin,N_iter]=fpann(para)
 warning off
-for k1=1:15
+for k1=11:15
 % Default parameters
 % if nargin<1
 %    para=[50 0.8];
@@ -20,7 +20,7 @@ p=p(k1);
 N_iter=N_iter(k1);
 
 s1=pwd; %Identify current folder
-s2=['\erroresFPAoc1512-' num2str(k1) '.txt'];
+s2=['\erroresFPAoc1702-' num2str(k1) '.txt'];
 %$s2='\erroresFPA0810.txt';
 dir = strcat(s1,s2);
 %--crear arhivo para guardar errores

@@ -6,14 +6,28 @@
 load pacientesreal.dat
 load tarreal.dat
 
-pacreal=sistst;
-x1=pacreal/ns;
+x1=pacientesreal;
+
+
+edad = x(1,:)/100;
+sexo = x(2,:);
+imc= x(3,:)/100;
+sisto= x(4,:)/162;
+dias=x(5,:)/115;
+fuma=x(6,:);
+padre= x(7,:)/2;
+
+x1=[edad; sexo; imc; sisto; dias; fuma; padre];
+ta1=pacitar1/100;
+
 
 rtarg=tarreal;
 num=length(rtarg);
+
 %SIMULANDO DATOS PRONOSTICADOS
-sim1=sim(net,x1);
-sim2=sim1*ns;
+entr=sim(net,pn2);
+sim1 = mapminmax('reverse',entr,ts2);
+sim2=round(sim1);
 
 %IMPRIMIR SOLO EL PRONOSITICO
 pronostico1=rtarg;
@@ -28,16 +42,16 @@ pronostico1=rtarg;
 %INTEGRACION POR PROMEDIO
 
    prom=pronostico1;
-   for iii=1:36
+   for iii=1:12
    erroresga(iii)=abs(rtarg(iii)-pronostico1(iii));  
    mse_calc(iii) = sum((rtarg(iii)-pronostico1(iii)).^2)/length(rtarg);
    end
 
    %mse_calc = sum((y-targets).^2)/length(y);
 
-errorestga=0;
-for ii=1:36
-   errorestga=errorestga+mse_calc(ii);
+errorestfpa=0;
+for ii=1:12
+   errorestfpa=errorestfpa+mse_calc(ii);
 end
 
-errorestga=errorestga/36;
+errorestfpa=errorestfpa/12;

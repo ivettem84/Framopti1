@@ -1,26 +1,25 @@
 
-
 function [best,fmin,N_iter]=fpann(para)
 warning off
 for k1=1:15
 % Default parameters
 % if nargin<1
 %    para=[50 0.8];
-% end
+% endj]=k\
 
 comienza=now;
 
 n=[36 38 40 42 44 46 48 50 52 54 56 58 60 62 64];           % Population size, typically 10 to 25
 p=[0.8 0.6 0.4 0.9 0.2 0.3 0.7 0.8 0.1 0.6 0.2 0.8 0.4 0.5 0.3];           % probabibility switch
 % Iteration parameters
-N_iter=[278 263 250 238 227 217 208 200 192 185 179 172 167 161 156];            % Total number of iterations
+N_iter=[278 263 250 238 227 217 208 200 192 185 179 172 167 161 156 150];            % Total number of iterations
 
 n=n(k1);
 p=p(k1);
 N_iter=N_iter(k1);
 
 s1=pwd; %Identify current folder
-s2=['\erroresFPAim1512-' num2str(k1) '.txt'];
+s2=['\erroresFPAim3003-' num2str(k1) '.txt'];
 %$s2='\erroresFPA0810.txt';
 dir = strcat(s1,s2);
 %--crear arhivo para guardar errores
@@ -31,7 +30,7 @@ d=3;
 % Lb=0*ones(1,d);
 % Ub=30*ones(1,d);
 
-Lb=[1 1 1];
+Lb=[1 1 1];  
 Ub=[2 30 30];
 
 % Initialize the population/solutions

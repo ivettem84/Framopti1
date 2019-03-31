@@ -1,10 +1,12 @@
 clc;
 clear;
 
-load('pacientesreal.dat')
+load pacreealnew.dat
+%load tarreal.dat
 
-load('framin130203.mat')
-paciente=pacientesreal;
+load('framinop280301.mat')
+
+paciente=pacreealnew;
 
 
 
@@ -13,6 +15,6 @@ n=length(paciente);
 for i=1:n
 
 estudio = net(paciente);
-riesgo=round(estudio);
+riesgo(:,i)=round(estudio*100);
 
 end

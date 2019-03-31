@@ -1,13 +1,26 @@
 function n = Fun3 (Sol,k1)
 
 
-load paci.dat
-load pacitar.dat
+% load pacientestrain.dat
+% load pacientestarg.dat
+% 
+% x=pacientestrain;
+% ta=pacientestarg;
+% 
 
-x= paci;
-ta= pacitar;
+x= paci100;
+%ta= pacitar1;
 
+edad = x(1,:)/100;
+sexo = x(2,:);
+imc= x(3,:)/100;
+sisto= x(4,:)/162;
+dias=x(5,:)/115;
+fuma=x(6,:);
+padre= x(7,:)/2;
 
+x1=[edad; sexo; imc; sisto; dias; fuma; padre];
+ta1=pacitar1/100;
 
 
 disp('Iniciando Entrenamiento...');
@@ -20,11 +33,11 @@ disp('Iniciando Entrenamiento...');
 %              display('Red monolitica en construccion')
 %           elseif (Chrom(i,1)==2) % Modular
               if(Sol(1,1)==1)% 1 modulo y  1 capa
-                  net=newff(minmax(x),[Sol(1,2),1],{'tansig','purelin','logsig'},'trainlm');
+                  net=newff(minmax(x1),[Sol(1,2),1],{'tansig','purelin','logsig'},'trainlm');
               end
               
               if(Sol(1,1)==2)% 1 modulo y  2 capa
-                  net=newff(minmax(x),[Sol(1,2),Sol(1,3),1],{'tansig','tansig','purelin','purelin','logsig'},'trainlm');
+                  net=newff(minmax(x1),[Sol(1,2),Sol(1,3),1],{'tansig','tansig','purelin','purelin','logsig'},'trainlm');
               end
               
 
@@ -33,9 +46,9 @@ disp('Iniciando Entrenamiento...');
               net.trainParam.show=NaN;
               net.trainParam.goal=1e-7;
               net.trainParam.lr=0.001;
-              net.trainParam.epochs = 500;
+              net.trainParam.epochs = 250;
               net.trainParam.showWindow=0;
-              [net,tr1]=train(net,x,ta);
+              [net,tr1]=train(net,x1,ta1);
           
           disp('Fin del entrenamiento de la Red monolitica');
           

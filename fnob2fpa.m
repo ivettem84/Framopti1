@@ -9,10 +9,22 @@ load tarreal.dat
 x1=pacientesreal;
 
 
+edad = x1(1,:)/100;
+sexo = x1(2,:);
+imc= x1(3,:)/100;
+sisto= x1(4,:)/162;
+dias=x1(5,:)/115;
+fuma=x1(6,:);
+padre= x1(7,:)/2;
+
+pn2=[edad; sexo; imc; sisto; dias; fuma; padre];
+
 rtarg=tarreal;
 num=length(rtarg);
+
 %SIMULANDO DATOS PRONOSTICADOS
-sim1=sim(net,x1);
+entr=sim(net,pn2);
+sim1 = entr*100;
 sim2=round(sim1);
 
 %IMPRIMIR SOLO EL PRONOSITICO
