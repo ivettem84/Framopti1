@@ -1,17 +1,13 @@
-function n = Fun3 (Sol,k1)
+function [n,red]= Fun3 (Sol)
 
 
-% load pacientestrain.dat
-% load pacientestarg.dat
-% 
-% x=pacientestrain;
-% ta=pacientestarg;
 
 
-load paci100.dat
-load pacitar1.dat 
 
-x= paci100;
+load pacientestrain1.dat
+load pacientestarg1.dat 
+
+x= pacientestrain1;
 %ta= pacitar1;
 
 edad = x(1,:)/100;
@@ -23,7 +19,7 @@ fuma=x(6,:);
 padre= x(7,:)/2;
 
 x1=[edad; sexo; imc; sisto; dias; fuma; padre];
-ta1=pacitar1/100;
+ta1=pacientestarg1/100;
 
 
 disp('Iniciando Entrenamiento...');
@@ -57,7 +53,7 @@ disp('Iniciando Entrenamiento...');
           
    fnob2fpa();
 
-   
+   red=net;
    %filename = [ 'best' num2str(k1) '.mat' ];
 % save(filename)
   n=errorestfpa;
